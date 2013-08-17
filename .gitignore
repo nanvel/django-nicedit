@@ -1,0 +1,5 @@
+*.egg-info/
+*.pyc
+db.sqlite3
+dist/
+app_media/

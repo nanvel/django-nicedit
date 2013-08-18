@@ -3,3 +3,4 @@
 db.sqlite3
 dist/
 app_media/
+.env

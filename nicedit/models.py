@@ -1,3 +1,5 @@
-"""Just an empty models file to let the testrunner recognize this as app."""
-# from django.db import models
-# from django.utils.translation import ugettext_lazy as _
+from django.db import models
+
+
+class NicEditImageModel(models.Model):
+    image = model.ImageField(upload_to='nicedit/%Y/%m/%d')

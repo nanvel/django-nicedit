@@ -1,12 +1,6 @@
-"""URLs for the nicedit app."""
-# from django.conf.urls.defaults import patterns, url
-
-# from . import views
+from django.conf.urls.defaults import patterns, url
 
 
-# urlpatterns = patterns(
-#     '',
-#     url(r'^$',
-#         views.YourView.as_view(),
-#         name='nicedit_default'),
-# )
+urlpatterns = patterns('nicedit.views',
+    url(r'^nicedit/upload/$', 'upload',vname='nicedit_upload'),
+)

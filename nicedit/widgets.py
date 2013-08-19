@@ -21,5 +21,5 @@ class NicEditWidget(forms.Textarea):
         rendered = super(NicEditWidget, self).render(name, value, attrs=attrs)
         return rendered + mark_safe(u'''
 <script>
-    new nicEditor({uploadURI: %s}).panelInstance('id_%s');
+    new nicEditor({uploadURI: '%s'}).panelInstance('id_%s');
 </script>''' % (reverse('nicedit_upload'), name))

@@ -55,6 +55,5 @@ setup(
         'django',
         'South',
         'PIL',
-        'mock',
     ],
 )

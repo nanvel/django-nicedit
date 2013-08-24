@@ -18,8 +18,6 @@ To get the latest commit from GitHub
 
     $ pip install -e git+git://github.com/nanvel/django-nicedit.git#egg=nicedit
 
-TODO: Describe further installation steps (edit / remove the examples below):
-
 Add ``nicedit`` to your ``INSTALLED_APPS``
 
 .. code-block:: python
@@ -35,7 +33,7 @@ Add the ``nicedit`` URLs to your ``urls.py``
 
     urlpatterns = patterns('',
         ...
-        url(r'^django-nicedit/', include('nicedit.urls')),
+        url(r'^nicedit/', include('nicedit.urls')),
     )
 
 Don't forget to migrate your database
@@ -44,12 +42,14 @@ Don't forget to migrate your database
 
     ./manage.py migrate nicedit
 
-
 Usage
 -----
 
-TODO: Describe usage or point to docs. Also describe available settings and
-templatetags.
+from nicedit.widgets import NicEditWidget
+
+
+class MyForm(forms.Form):
+    content = forms.TextField(widget=NicEditWidget())
 
 
 Contribute

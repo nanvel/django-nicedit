@@ -1,4 +1,5 @@
 import sys
+import os
 
 from django.conf import settings
 
@@ -6,13 +7,18 @@ from django.conf import settings
 def main():
     settings.configure(
         INSTALLED_APPS=(
+            'django.contrib.auth',
+            'django.contrib.contenttypes',
+            'django.contrib.sessions',
             'nicedit',
         ),
         DATABASES={
             'default': {
                 'ENGINE': 'django.db.backends.sqlite3',
-            }
+            },
         },
+        ROOT_URLCONF='nicedit.urls',
+        MEDIA_ROOT=os.path.join(os.path.dirname(__file__), 'app_media'),
         SITE_ID=1,
     )
 

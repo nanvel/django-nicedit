@@ -2,6 +2,16 @@
 
 {% block title %}NicEdit django widget usage example{% endblock %}
 
-{% block content %}
+{% block js %}
+{{ form.media }}
+{% endblock %}
 
+{% block content %}
+<h1>NicEdit widget example</h1>
+
+<form method="post" action=".">
+{% csrf_token %}
+{{ form.content }}
+<button type="submit" style="margin: 20px 0;">Submit</button>
+</form>
 {% endblock %}

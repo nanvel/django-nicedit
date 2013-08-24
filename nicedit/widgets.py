@@ -8,13 +8,8 @@ from django.utils.safestring import mark_safe
 class NicEditWidget(forms.Textarea):
 
     class Media:
-        css = {
-            'all': (
-                staticfiles_storage.url('css/nicedit.css'),
-            )
-        }
         js = (
-            staticfiles_storage.url('js/nicedit.js'),
+            staticfiles_storage.url('js/nicedit.min.js'),
         )
  
     def render(self, name, value, attrs=None):
@@ -23,3 +18,21 @@ class NicEditWidget(forms.Textarea):
 <script>
     new nicEditor({uploadURI: '%s'}).panelInstance('id_%s');
 </script>''' % (reverse('nicedit_upload'), name))
+
+
+class NicEditAdminWidget(NicEditWidget):
+ 
+    def render(self, name, value, attrs=None):
+        rendered = super(NicEditWidget, self).render(name, value, attrs=attrs)
+        return rendered + mark_safe(u'''
+<script>
+    var ta = document.getElementById('id_%s');
+    if(ta) {
+        var container = document.createElement('div');
+        container.style.display = 'inline-block';
+        container.style.float = 'left';
+        ta.parentNode.insertBefore(container, ta);
+        container.appendChild(ta);
+        new nicEditor({uploadURI: '%s'}).panelInstance(ta);
+    }
+</script>''' % (name, reverse('nicedit_upload')))

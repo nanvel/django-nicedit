@@ -1,7 +1,10 @@
-Nicedit widget for Django
-============
+NicEdit widget for Django
+=========================
 
-Nicedit widget for django with image upload feature.
+NicEdit widget for django with image upload feature.
+
+NicEdit home: `http://nicedit.com/ <http://nicedit.com/>`__
+Site: `http://nanvel.name/weblog/django-nicedit/ <http://nanvel.name/weblog/django-nicedit/>`__
 
 Installation
 ------------
@@ -24,6 +27,7 @@ Add ``nicedit`` to your ``INSTALLED_APPS``
 
     INSTALLED_APPS = (
         ...,
+        'south',
         'nicedit',
     )
 
@@ -40,17 +44,76 @@ Don't forget to migrate your database
 
 .. code-block:: bash
 
-    ./manage.py migrate nicedit
+    python manage.py migrate nicedit
+
+MEDIA_ROOT should be specified, example:
+
+.. code-block:: python
+
+    MEDIA_ROOT = os.path.join(os.path.dirname('__file__'), '../media')
+    MEDIA_URL = '/media/'
+
+Add to urls configuration:
+
+.. code-block:: python
+
+    from django.conf.urls.static import static
+    from django.conf import settings
+
+    if settings.DEBUG:
+        urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 Usage
 -----
 
-from nicedit.widgets import NicEditWidget
+forms.py:
+
+.. code-block:: python
+
+    from django import forms
+
+    from nicedit.widgets import NicEditWidget
 
 
-class MyForm(forms.Form):
-    content = forms.TextField(widget=NicEditWidget())
+    class MessageForm(forms.Form):
+        message = forms.CharField(
+                widget=NicEditWidget(attrs={'style': 'width: 800px;'}))
 
+views.py:
+
+.. code-block:: python
+
+    from django.shortcuts import render
+
+    from .forms import MessageForm
+
+
+    def home(request):
+        form = MessageForm()
+        return render(request, 'home.html', {'form': form})
+
+template:
+
+.. code-block:: html
+
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="utf-8">
+            <title>NicEdit widget</title>
+            {{ form.media }}
+        </head>
+        <body>
+            <form action='.' method='post'>
+                {% csrf_token %}
+                {{ form.message }}
+                <button type="submit">Submit</button>
+            </form>
+        </body>
+    </html>
+
+
+See `testproject <https://github.com/nanvel/django-nicedit/tree/master/testproject>`__ for example.
 
 Contribute
 ----------
@@ -61,9 +124,10 @@ If you want to contribute to this project, please perform the following steps
 
     # Fork this repository
     # Clone your fork
-    $ mkvirtualenv -p python2.7 django-nicedit
+    $ virtualenv .env --no-site-packages
+    $ source .env/bin/activate
     $ python setup.py install
-    $ pip install -r dev_requirements.txt
+    $ pip install -r test_requirements.txt
 
     $ git co -b feature_branch master
     # Implement your feature and tests

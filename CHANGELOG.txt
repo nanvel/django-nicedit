@@ -1,2 +1,5 @@
 === 0.1 ===
 - Added two widgets: NicEditWidget, NicEditAdminWidget
+
+=== 0.21 ===
+- PIL -> Pillow

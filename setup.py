@@ -54,6 +54,6 @@ setup(
     install_requires=[
         'django',
         'South',
-        'PIL',
+        'Pillow',
     ],
 )

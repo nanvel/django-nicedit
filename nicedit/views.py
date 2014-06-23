@@ -7,8 +7,8 @@ from .forms import NicEditImageForm
 def upload(request):
     if not request.user.is_authenticated():
         json = simplejson.dumps({
-                'success': False,
-                'errors': {'__all__': 'Authentication required'}})
+            'success': False,
+            'errors': {'__all__': 'Authentication required'}})
         return HttpResponse(json, mimetype='application/json')
     form = NicEditImageForm(request.POST or None, request.FILES or None)
     if form.is_valid():
@@ -17,14 +17,13 @@ def upload(request):
             'success': True,
             'upload': {
                 'links': {
-                        'original': image.image.url},
+                    'original': image.image.url},
                 'image': {
-                        'width': image.image.width,
-                        'height': image.image.height}
+                    'width': image.image.width,
+                    'height': image.image.height}
             }
         })
     else:
         json = simplejson.dumps({
-                'success': False,
-                'errors': form.errors})
+            'success': False, 'errors': form.errors})
     return HttpResponse(json, mimetype='application/json')

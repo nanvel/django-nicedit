@@ -3,3 +3,9 @@
 
 === 0.21 ===
 - PIL -> Pillow
+
+=== 0.22 ===
+
+- niceEdit options can now be set in widget init method
+- added example of admin widget usage
+- updated js code

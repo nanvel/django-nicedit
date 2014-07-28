@@ -138,7 +138,7 @@ Usage in admin:
 	                    'save', 'bold', 'italic', 'underline', 'left', 'center',
 	                    'right', 'justify', 'ol', 'ul', 'fontSize',  # 'fontFamily',
 	                    'fontFormat', 'indent', 'outdent', 'image', 'upload', 'link',
-	                    'unlink', 'forecolor', 'bgcolor']}
+	                    'unlink', 'forecolor', 'bgcolor', 'xhtml']}
 	            ),
 	        }
 

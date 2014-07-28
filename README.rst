@@ -115,6 +115,39 @@ template:
 
 See `testproject <https://github.com/nanvel/django-nicedit/tree/master/testproject>`__ for example.
 
+Usage in admin:
+
+.. code-block:: python
+
+	# -*- coding: utf-8 -*-
+	from django import forms
+	from django.contrib import admin
+
+	from nicedit.widgets import NicEditAdminWidget
+
+	from .models import Item
+
+	class ItemAdminForm(forms.ModelForm):
+
+	    class Meta:
+	        model = Item
+	        widgets = {
+	            'text': NicEditAdminWidget(
+	                attrs={'style': 'width: 610px;'},
+	                js_options={"buttonList": [
+	                    'save', 'bold', 'italic', 'underline', 'left', 'center',
+	                    'right', 'justify', 'ol', 'ul', 'fontSize',  # 'fontFamily',
+	                    'fontFormat', 'indent', 'outdent', 'image', 'upload', 'link',
+	                    'unlink', 'forecolor', 'bgcolor', 'xhtml']}
+	            ),
+	        }
+
+
+	class ItemAdmin(admin.ModelAdmin):
+
+	    form = ItemAdminForm
+
+
 Contribute
 ----------
 

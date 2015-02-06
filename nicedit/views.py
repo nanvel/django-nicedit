@@ -1,4 +1,7 @@
-from django.utils import simplejson
+try:
+    from django.utils import simplejson as json
+except ImportError:
+    import json
 from django.http import HttpResponse
 
 from .forms import NicEditImageForm
@@ -6,14 +9,14 @@ from .forms import NicEditImageForm
 
 def upload(request):
     if not request.user.is_authenticated():
-        json = simplejson.dumps({
+        json_data = json.dumps({
             'success': False,
             'errors': {'__all__': 'Authentication required'}})
-        return HttpResponse(json, mimetype='application/json')
+        return HttpResponse(json_data, mimetype='application/json')
     form = NicEditImageForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         image = form.save()
-        json = simplejson.dumps({
+        json_data = json.dumps({
             'success': True,
             'upload': {
                 'links': {
@@ -24,6 +27,6 @@ def upload(request):
             }
         })
     else:
-        json = simplejson.dumps({
+        json_data = json.dumps({
             'success': False, 'errors': form.errors})
-    return HttpResponse(json, mimetype='application/json')
+    return HttpResponse(json_data, mimetype='application/json')

@@ -4,7 +4,7 @@ NicEdit widget for Django
 NicEdit widget for django with image upload feature.
 
 NicEdit home: `http://nicedit.com/ <http://nicedit.com/>`__
-Site: `http://nanvel.name/weblog/django-nicedit/ <http://nanvel.name/weblog/django-nicedit/>`__
+Blog post: `http://nanvel.com/b/1377388800 <http://nanvel.com/b/1377388800>`__
 
 Installation
 ------------

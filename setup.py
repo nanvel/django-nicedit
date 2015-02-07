@@ -47,7 +47,7 @@ setup(
     platforms=['OS Independent'],
     keywords='django, nicedit, widget, rte',
     author='Oleksandr Polyeno',
-    author_email='polyeno.com',
+    author_email='polyenoom@gmail.com',
     url="https://github.com/nanvel/django-nicedit",
     packages=find_packages(),
     include_package_data=True,

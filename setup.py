@@ -27,9 +27,11 @@ For more information on creating source distributions, see
 http://docs.python.org/2/distutils/sourcedist.html
 
 """
+
 import os
-from setuptools import setup, find_packages
 import nicedit as app
+
+from setuptools import setup, find_packages
 
 
 def read(fname):

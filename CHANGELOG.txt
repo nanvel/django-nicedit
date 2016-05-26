@@ -9,3 +9,9 @@
 - niceEdit options can now be set in widget init method
 - added example of admin widget usage
 - updated js code
+
+==== 0.24 ===
+
+- docs improvements
+- support for django 1.6
+- updated AUTHORS

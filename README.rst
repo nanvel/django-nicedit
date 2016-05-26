@@ -5,7 +5,12 @@ NicEdit widget for django with image upload feature.
 
 NicEdit home: `http://nicedit.com/ <http://nicedit.com/>`__
 
-Blog post: `http://nanvel.com/b/1377388800 <http://nanvel.com/b/1377388800>`__
+Blog post: `NicEdit widget for Django <http://nanvel.name/2013/08/django-nicedit>`__
+
+Versions
+--------
+
+0.24 - use with Django==1.6
 
 Installation
 ------------
@@ -27,8 +32,7 @@ Add ``nicedit`` to your ``INSTALLED_APPS``
 .. code-block:: python
 
     INSTALLED_APPS = (
-        ...,
-        'south',
+        ...
         'nicedit',
     )
 
@@ -78,7 +82,8 @@ forms.py:
 
     class MessageForm(forms.Form):
         message = forms.CharField(
-                widget=NicEditWidget(attrs={'style': 'width: 800px;'}))
+            widget=NicEditWidget(attrs={'style': 'width: 800px;'})
+        )
 
 views.py:
 
@@ -99,18 +104,18 @@ template:
 
     <!DOCTYPE html>
     <html lang="en">
-        <head>
-            <meta charset="utf-8">
-            <title>NicEdit widget</title>
-            {{ form.media }}
-        </head>
-        <body>
-            <form action='.' method='post'>
-                {% csrf_token %}
-                {{ form.message }}
-                <button type="submit">Submit</button>
-            </form>
-        </body>
+      <head>
+        <meta charset="utf-8">
+        <title>NicEdit widget</title>
+        {{ form.media }}
+      </head>
+      <body>
+        <form action='.' method='post'>
+          {% csrf_token %}
+          {{ form.message }}
+          <button type="submit">Submit</button>
+        </form>
+      </body>
     </html>
 
 
@@ -120,33 +125,35 @@ Usage in admin:
 
 .. code-block:: python
 
-	# -*- coding: utf-8 -*-
+    # -*- coding: utf-8 -*-
 	from django import forms
-	from django.contrib import admin
+    from django.contrib import admin
 
-	from nicedit.widgets import NicEditAdminWidget
+    from nicedit.widgets import NicEditAdminWidget
 
-	from .models import Item
+    from .models import Item
 
-	class ItemAdminForm(forms.ModelForm):
 
-	    class Meta:
-	        model = Item
-	        widgets = {
+    class ItemAdminForm(forms.ModelForm):
+
+        class Meta:
+            model = Item
+            widgets = {
 	            'text': NicEditAdminWidget(
 	                attrs={'style': 'width: 610px;'},
 	                js_options={"buttonList": [
 	                    'save', 'bold', 'italic', 'underline', 'left', 'center',
 	                    'right', 'justify', 'ol', 'ul', 'fontSize',  # 'fontFamily',
 	                    'fontFormat', 'indent', 'outdent', 'image', 'upload', 'link',
-	                    'unlink', 'forecolor', 'bgcolor', 'xhtml']}
-	            ),
+	                    'unlink', 'forecolor', 'bgcolor', 'xhtml']
+                    }
+	            )
 	        }
 
 
-	class ItemAdmin(admin.ModelAdmin):
+    class ItemAdmin(admin.ModelAdmin):
 
-	    form = ItemAdminForm
+        form = ItemAdminForm
 
 
 Contribute

@@ -7,3 +7,4 @@ class NicEditImageForm(forms.ModelForm):
 
     class Meta:
         model = NicEditImage
+        fields = '__all__'

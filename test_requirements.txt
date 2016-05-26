@@ -1,3 +1,2 @@
-Django>=1.4,<1.7
-South
+Django>=1.7,<1.8
 Pillow

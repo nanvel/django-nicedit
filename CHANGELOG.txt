@@ -15,3 +15,10 @@
 - docs improvements
 - support for django 1.6
 - updated AUTHORS
+
+=== 1.1 ===
+
+- support for Django 1.7
+- removed South
+- updated migrations
+- fixed tests

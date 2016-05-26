@@ -10,7 +10,11 @@ Blog post: `NicEdit widget for Django <http://nanvel.name/2013/08/django-nicedit
 Versions
 --------
 
+0.23 - use with Django<1.6
+
 0.24 - use with Django==1.6
+
+1.1 - use with Django==1.7
 
 Installation
 ------------
@@ -126,7 +130,7 @@ Usage in admin:
 .. code-block:: python
 
     # -*- coding: utf-8 -*-
-	from django import forms
+    from django import forms
     from django.contrib import admin
 
     from nicedit.widgets import NicEditAdminWidget
@@ -139,16 +143,16 @@ Usage in admin:
         class Meta:
             model = Item
             widgets = {
-	            'text': NicEditAdminWidget(
-	                attrs={'style': 'width: 610px;'},
-	                js_options={"buttonList": [
-	                    'save', 'bold', 'italic', 'underline', 'left', 'center',
-	                    'right', 'justify', 'ol', 'ul', 'fontSize',  # 'fontFamily',
-	                    'fontFormat', 'indent', 'outdent', 'image', 'upload', 'link',
-	                    'unlink', 'forecolor', 'bgcolor', 'xhtml']
+                'text': NicEditAdminWidget(
+                    attrs={'style': 'width: 610px;'},
+                    js_options={"buttonList": [
+                        'save', 'bold', 'italic', 'underline', 'left', 'center',
+                        'right', 'justify', 'ol', 'ul', 'fontSize',  # 'fontFamily',
+                        'fontFormat', 'indent', 'outdent', 'image', 'upload', 'link',
+                        'unlink', 'forecolor', 'bgcolor', 'xhtml']
                     }
-	            )
-	        }
+                )
+            }
 
 
     class ItemAdmin(admin.ModelAdmin):

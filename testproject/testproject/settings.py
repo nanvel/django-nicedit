@@ -97,7 +97,7 @@ SECRET_KEY = 'vub$0jb^#+x4m^z4jx*s*-m9uyo3x0ng!j=9qgo5qe^#bw%c&q'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    # 'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -131,7 +131,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
 
-    'south',
     'nicedit',
 
     'testproject.testapp',

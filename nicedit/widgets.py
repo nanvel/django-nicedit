@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
 import json
+
 from django import forms
-from django.conf import settings
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.core.urlresolvers import reverse
 from django.utils.safestring import mark_safe
+
+
+__all__ = ('NicEditWidget', 'NicEditAdminWidget')
 
 
 class NicEditWidget(forms.Textarea):

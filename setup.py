@@ -48,14 +48,13 @@ setup(
     license='The MIT License',
     platforms=['OS Independent'],
     keywords='django, nicedit, widget, rte',
-    author='Oleksandr Polyeno',
+    author='Oleksandr Polieno',
     author_email='polyenoom@gmail.com',
     url="https://github.com/nanvel/django-nicedit",
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
-        'django<1.7',
-        'South',
+        'Django>=1.7,<1.8',
         'Pillow'
     ],
 )

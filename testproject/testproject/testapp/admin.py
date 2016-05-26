@@ -4,6 +4,9 @@ from .models import Message
 from .forms import MessageAdminForm
 
 
+__all__ = tuple()
+
+
 class MessageAdmin(admin.ModelAdmin):
 
     form = MessageAdminForm

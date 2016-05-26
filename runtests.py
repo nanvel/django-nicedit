@@ -1,6 +1,7 @@
 import sys
 import os
 
+from django import setup
 from django.conf import settings
 
 
@@ -17,10 +18,17 @@ def main():
                 'ENGINE': 'django.db.backends.sqlite3',
             },
         },
+        MIDDLEWARE_CLASSES = (
+            'django.middleware.common.CommonMiddleware',
+            'django.contrib.sessions.middleware.SessionMiddleware',
+            'django.contrib.auth.middleware.AuthenticationMiddleware'
+        ),
         ROOT_URLCONF='nicedit.urls',
         MEDIA_ROOT=os.path.join(os.path.dirname(__file__), 'app_media'),
         SITE_ID=1,
     )
+
+    setup()
 
     from django.test.simple import DjangoTestSuiteRunner
 

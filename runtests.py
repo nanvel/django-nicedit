@@ -30,9 +30,9 @@ def main():
 
     setup()
 
-    from django.test.simple import DjangoTestSuiteRunner
+    from django.test.runner import DiscoverRunner
 
-    test_runner = DjangoTestSuiteRunner(verbosity=1)
+    test_runner = DiscoverRunner(verbosity=1)
     failures = test_runner.run_tests(['nicedit',])
     if failures:
         sys.exit(failures)

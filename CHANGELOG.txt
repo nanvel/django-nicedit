@@ -22,3 +22,8 @@
 - removed South
 - updated migrations
 - fixed tests
+
+=== 1.1.1 ===
+
+- fixed requirements: Django>=1.7,<1.8 -> Django>=1.7
+- support for django 1.8

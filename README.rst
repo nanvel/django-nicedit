@@ -14,7 +14,7 @@ Versions
 
 0.24 - use with Django==1.6
 
-1.1 - use with Django==1.7
+1.1 - use with Django>=1.7
 
 Installation
 ------------
